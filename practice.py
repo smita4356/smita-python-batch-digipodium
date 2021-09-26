@@ -1,11 +1,2 @@
-
-
-a=3
-b=2
-c=0
-c=a+b
-print(c)
-c=a-b
-print(c)
-c=a*b
-print(c)
+for i in range (1,5):
+    print(i,*i)
