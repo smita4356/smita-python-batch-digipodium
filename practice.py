@@ -1,2 +1,3 @@
-for i in range (1,5):
-    print(i,*i)
+name='smita'
+print(len(name))
+print(name[1:5:2])
