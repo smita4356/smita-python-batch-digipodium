@@ -30,10 +30,10 @@ spacing=int(input('select a number for spacing'))
 print(f'printing{word}with spacing{spacing}')
 char=input('enter a char')
 
-lword=word.ljust(spacing,char)
+lword=word.ljust(spacing,char)        #left
 print(lword)
-rword=word.rjust(spacing,char)
+rword=word.rjust(spacing,char)          #right
 print(rword)
-cword=word.center(spacing,char)
+cword=word.center(spacing,char)       #center
 print(cword)
 

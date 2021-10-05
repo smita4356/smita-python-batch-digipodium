@@ -1,4 +1,4 @@
-''.    #used to open list of string function..
+" ''. "   #used to open list of string function..
 '''string functions can be deivided into following categories
 1.format/output modification
 upper()
