@@ -2,4 +2,6 @@
 #text = 'this is some text'
 text = 'this is some text'
 print(text)
-
+text='this is some text'
+for word in text.split():
+    print(word,'aye',sep='', end=' ')

@@ -1,0 +1,16 @@
+#libraries for python data science
+sqlalchemy
+streamlit
+numpy
+matplotlib
+seaborn
+pandas
+plotly
+selenium
+pillow
+opencv-contrib-python
+textblob
+selenium
+webdriver_manager
+
+
