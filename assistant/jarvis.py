@@ -140,6 +140,7 @@ if __name__=="__main__":
             except Exception as e:
                 print(e)
                 speak('sorry mam, i am not able to send email')
+        
         elif 'email to ismita' in query:
             try:
                 speak('what should i say?')
@@ -147,6 +148,7 @@ if __name__=="__main__":
                 to='smitaspn08@gmail.com'
                 sendEmail(to, content)
                 speak('email has been sent')
+    
      
             except Exception as e:
                 print(e)
