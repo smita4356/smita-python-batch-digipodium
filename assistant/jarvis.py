@@ -6,6 +6,13 @@ import os
 import webbrowser
 import smtplib
 import pywhatkit
+from datetime import date
+import calendar
+import time
+import email
+import traceback
+import imaplib
+import operator
 engine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engine.setProperty('voice', voices[1].id)
@@ -67,7 +74,16 @@ if __name__=="__main__":
             print(results)
             speak (results)
         elif 'open youtube' in query:
-            webbrowser.open('youtube.com')
+            speak('what should i search')
+            content=takeCommand()
+            
+            pywhatkit.playonyt(content)
+            speak('playing video')
+
+        elif 'open gmail' in query:
+            speak('opening gmail')
+            webbrowser.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox')  
+            
         elif 'introduce yourself' in query:
             intro='Hii, this is heyley. developed by smita srivastava,student of doctor shakuntala misra university,lucknow'
             print(intro)
@@ -75,13 +91,29 @@ if __name__=="__main__":
         elif 'open google' in query:
             speak('opening google')
             webbrowser.open('google.com')
+        elif 'open whatsapp' in query:
+            speak('opening whatsapp')
+            webbrowser.open('web.whatsapp.com')
         elif 'play music in you tube' in query:
             song = query.replace('play', '')
             speak('playing ' + song)
             pywhatkit.playonyt(song)
+        
+
         elif 'the time' in query:
             strtime=datetime.datetime.now().strftime('%I:%M %p')
             speak(f"mam, the time is{strtime}")
+        elif 'current date' in query:
+            today=date.today()
+            print(today)          
+            speak(f"mam the date is{today}")
+        elif 'the day' in query:
+            curr_date=date.today()
+            day=(calendar.day_name[curr_date.weekday()])
+            print(f"mam, today is {day}")
+            speak(f"mam, today is {day}")
+            
+        
         elif 'open vs code' in query:
             codepath="C:\\Users\\HP\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             speak('opening vs code')
@@ -118,6 +150,18 @@ if __name__=="__main__":
             speak('opening msaccess')
             access="C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Microsoft Office\\Microsoft Office Access 2007"
             os.startfile(access)
+        elif 'open anydesk' in query:
+            speak('opening anydesk')
+            desk="C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe"
+            os.startfile(desk)
+        elif 'open command prompt' in query:
+            prompt= "C:\\Users\\HP\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Command Prompt"
+
+            speak('opening command prompt')
+            os.startfile(prompt)
+        
+
+            
         elif 'email to smita' in query:
             try:
                 speak('what should i say?')
@@ -155,12 +199,26 @@ if __name__=="__main__":
                 speak('sorry mam, i am not able to send email')
 
 
+        elif 'activate calculator':
+            speak('activating calculator')
+            
+        my_string=takeCommand()
+        print(my_string)
+        def get_operator_fn(op):
 
-
-
-
-
-
-    
-
+            return {
+                '+' : operator.add,
+                '-' : operator.sub,
+                'x' : operator.mul,
+                'divided' :operator.__truediv__,
+                'Mod' : operator.mod,
+                'mod' : operator.mod,
+                '^' : operator.xor,
+                }[op]
+        def eval_binary_expr(op1, oper, op2):
+            op1,op2 = int(op1), int(op2)
+            return get_operator_fn(oper)(op1, op2)
+        result=eval_binary_expr(*(my_string.split()))
+        res=print('the result is',result)
+        speak(result)
     
